@@ -1,11 +1,11 @@
-### use pyspark from the serve
+## use pyspark from the serve
 you should execute the command in the /home/username, and do not use the root user.
-1. get the spark
+### 1. get the spark
 ```
 wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz
 tar xf spark-3.0.1-bin-hadoop2.7.tgz
 ```
-2. java8
+### 2. java8
 ```
 java -version
 ```
@@ -15,7 +15,7 @@ sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 ```
-3. install annaconda
+### 3. install annaconda
 ```
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 bash Anaconda3-2020.07-Linux-x86_64.sh 
@@ -37,7 +37,7 @@ Let environment variables take effect
 ```
 source ~/.bashrc
 ```
-4. Setting up remote access of the jupyter
+### 4. Setting up remote access of the jupyter
 ```
 jupyter notebook --generate-config
 ```
@@ -65,16 +65,17 @@ c.NotebookApp.password = u'password copy from the json'
 c.NotebookApp.open_browser = False
 c.NotebookApp.port =7777 # any port you like
 ```
-5. set the port in the azure
+### 5. set the port in the azure
+
    虚拟机->网络->添加入站端口规则->目标端口范围:7777(port in the jupyter_notebook_config.py)->添加
 
    if you want to use the spark ui, do the same thing in the port 4040.
-6. install the graphframe
+### 6. install the graphframe
 ```
 wget http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/0.8.0-spark3.0-s_2.12/graphframes-0.8.0-spark3.0-s_2.12.jar
 sc.addPyFile('path_to_the_jar_file')
 ```
-7. use the jupyter 
+### 7. use the jupyter 
 ```
 pyspark --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
 ```
@@ -82,3 +83,9 @@ If you want to keep it executing all the time, run the command following.
 ```
 nohup pyspark --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12 >pyspark_log.txt 2>&1 &
 ```
+
+### jupyter 
+ip:7777
+### spark web ui
+ip:4040
+  
